@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Enhanced Navbar Styles */
+.navbar-container {
+  @apply fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl;
+}
+
+.navbar-glass {
+  @apply rounded-2xl border shadow-lg;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-glass.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  @apply px-4 py-2 rounded-xl transition-all duration-300 relative overflow-hidden;
+}
+
+.nav-link::before {
+  content: '';
+  @apply absolute inset-0 bg-black/0 transition-all duration-300;
+}
+
+.nav-link:hover::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active::before {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-button {
+  @apply px-6 py-2 rounded-xl border transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.nav-button:hover {
+  @apply transform scale-105;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Enhanced Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
